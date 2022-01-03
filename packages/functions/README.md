@@ -1,1 +1,0 @@
-# @npmworkspacesexample/functions

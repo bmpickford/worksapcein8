@@ -1,7 +1,7 @@
 {
-  "name": "@npmworkspacesexample/element",
+  "name": "@workspacein8/init",
   "version": "0.0.1",
-  "description": "Lit dev element",
+  "description": "Create initial repo",
   "author": "Benjamin Pickford <b.mpickford@outlook.com> (https://benpickford.me)",
   "keywords": [],
   "license": "MIT",
@@ -11,7 +11,8 @@
   "types": "index.d.ts",
   "typedocMain": "index.js",
   "scripts": {
-    "test": "wtr ./*.test.js --node-resolve"
+    "start": "node index.js",
+    "test": "mocha ./**/*.test.js"
   },
   "exports": {
     ".": {
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@open-wc/testing": "^3.0.3",
     "@chialab/wtr-mocha-reporter": "^0.14.10",
-    "@web/test-runner": "^0.13.23"
+    "@web/test-runner": "^0.13.23",
+    "mustache": "^4.2.0"
   }
 }

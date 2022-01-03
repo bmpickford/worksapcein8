@@ -1,0 +1,35 @@
+{
+    "name": "{{#scope}}{{scope}}/{{/scope}}{{package_name}}",
+    "version": "0.0.0",
+    "description": "Monorepo for {{package_name}}",
+    "author": "{{scope}}",
+    "keywords": [],
+    "license": "{{license}}",
+    "type": "module",
+    "main": "index.js",
+    "module": "index.js",
+    "types": "index.d.ts",
+    "typedocMain": "index.js",
+    "scripts": {
+      "test": "mocha ./**/*.test.js"
+    },
+    "exports": {
+      ".": {
+        "import": "./index.js"
+      }
+    },
+    {{#repository_url}}
+    "repository": {
+      "type": "git",
+      "url": "{{repository_url}}"
+    },
+    "bugs": {
+      "url": "{{repository_url}}/issues"
+    },
+    {{/repository_url}}
+    "engines": {
+      "node": ">=14",
+      "npm": ">=7"
+    }
+  }
+  

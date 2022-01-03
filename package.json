@@ -1,5 +1,5 @@
 {
-  "name": "npmworkspacesexample",
+  "name": "workspacein8",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
@@ -7,16 +7,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {
-    "build": "npm run clean && npm run types && npm run build --ws --if-present",
-    "types": "tsc",
-    "example": "(cd example && npm run dev)",
-    "doc": "typedoc",
-    "clean": "npm exec -c 'rimraf dist/' --ws",
-    "test": "npm run test --ws --if-present",
-    "lint": "eslint .",
-    "prepare": "husky install"
-  },
   "devDependencies": {
     "chai": "^4.3.4",
     "eslint": "^8.3.0",
@@ -30,5 +20,8 @@
     "typedoc": "^0.22.10",
     "typescript": "^4.5.4",
     "vite": "^2.7.2"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2"
   }
 }
