@@ -1,0 +1,34 @@
+{
+  "name": "npmworkspacesexample",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run types && npm run build --ws --if-present",
+    "types": "tsc",
+    "example": "(cd example && npm run dev)",
+    "doc": "typedoc",
+    "clean": "npm exec -c 'rimraf dist/' --ws",
+    "test": "npm run test --ws --if-present",
+    "lint": "eslint .",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^8.3.0",
+    "eslint-plugin-mocha": "^9.0.0",
+    "husky": "^7.0.4",
+    "jsdoc": "^3.6.7",
+    "jsdoc-to-markdown": "^7.1.0",
+    "mocha": "^9.1.3",
+    "rimraf": "^3.0.2",
+    "size-limit": "^7.0.5",
+    "typedoc": "^0.22.10",
+    "typescript": "^4.5.4",
+    "vite": "^2.7.2"
+  }
+}
