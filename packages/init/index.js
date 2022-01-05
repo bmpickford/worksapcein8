@@ -1,12 +1,12 @@
 import prompts from 'prompts';
-import create from './create';
-import { validatePackageName, validateScope } from './validators/index';
+import create from './create.js';
+import { validatePackageName, validateScope } from './validators/index.js';
 
 const questions = [
     {
         type: 'text',
         name: 'package_name',
-        message: 'Root package name?',
+        message: 'First package name?',
         validate: validatePackageName,
     },
     {
