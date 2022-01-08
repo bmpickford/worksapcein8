@@ -1,6 +1,6 @@
 {
     "name": "@workspacein8/core",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Core functionality for @workspacin8",
     "author": "",
     "keywords": [],
@@ -11,17 +11,16 @@
     "types": "index.js",
     "typedocMain": "index.js",
     "scripts": {
-      "start": "node index.js",
-      "test": "mocha ./**/*.test.js"
+        "start": "node index.js",
+        "test": "mocha ./**/*.test.js"
     },
     "exports": {
-      ".": {
-        "import": "./index.js"
-      }
+        ".": {
+            "import": "./index.js"
+        }
     },
     "engines": {
-      "node": ">=16.10",
-      "npm": ">=7"
+        "node": ">=16.10",
+        "npm": ">=7"
     }
-  }
-  
+}

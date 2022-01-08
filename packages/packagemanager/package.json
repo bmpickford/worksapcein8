@@ -1,6 +1,6 @@
 {
     "name": "@workspacein8/packagemanager",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Commands for package managers",
     "author": "Benjamin Pickford <b.mpickford@outlook.com> (https://benpickford.me)",
     "keywords": [],
