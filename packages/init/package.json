@@ -31,12 +31,8 @@
     "npm": ">=7"
   },
   "dependencies": {
-    "lit": "^2.0.2"
-  },
-  "devDependencies": {
-    "@open-wc/testing": "^3.0.3",
-    "@chialab/wtr-mocha-reporter": "^0.14.10",
-    "@web/test-runner": "^0.13.23",
-    "mustache": "^4.2.0"
+    "@workspacein8/package": "*",
+    "@workspacein8/packagemanager": "*",
+    "@workspacein8/workspace": "*"
   }
 }

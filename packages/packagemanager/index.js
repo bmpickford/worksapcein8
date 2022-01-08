@@ -2,6 +2,7 @@ import { execSync } from 'child_process';
 import { GetCommands } from './commands/index.js';
 import chalk from 'chalk';
 
+
 /**
  * Package manager base class
  */
@@ -93,3 +94,5 @@ export class PackageManager {
         }
     }
 }
+
+export * as Commands from './commands/index.js';

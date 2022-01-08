@@ -1,8 +1,9 @@
-import Mustache from 'mustache';
 import fs from 'fs';
 import chalk from 'chalk';
-import { PackageManager } from './src/packageManager/index.js';
-import { GetCommands } from './src/packageManager/commands/index.js';
+import { PackageManager } from '@workspacein8/packagemanager';
+import { create as createWorkspace } from '@workspacein8/workspace';
+import { create as createPackage } from '@workspacein8/package';
+import { execSync } from 'child_process';
 
 const OUT_DIR = '../../out';
 
@@ -25,15 +26,16 @@ const OUT_DIR = '../../out';
  * @returns {boolean}
  */
 export default async function create(opts) {
-    PackageManager.cwd = OUT_DIR;
+    PackageManager.cwd = opts.out_dir;
     PackageManager.debug = true;
-    if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR);
+    if (!fs.existsSync(opts.out_dir)) fs.mkdirSync(opts.out_dir);
     if (!fs.existsSync(`${OUT_DIR}/packages`)) fs.mkdirSync(`${OUT_DIR}/packages`);
+    if (!fs.existsSync(`${OUT_DIR}/packages/${opts.package_name}`)) fs.mkdirSync(`${OUT_DIR}/packages/${opts.package_name}`);
     await Promise.all([
-        createRootFiles(opts),
-        createWorkspaceFiles(opts)
+        createWorkspace(opts),
+        createPackage({ ...opts, out_dir: `${opts.out_dir}/packages/${opts.package_name}`}),
     ]);
-    
+    execSync(`npx npx -p typescript tsc ${opts.out_dir}/packages/${opts.package_name}/index.js --declaration --emitDeclarationOnly --allowJs`);
     addDeps(opts);
     addExample(opts);
 }
@@ -45,7 +47,10 @@ export default async function create(opts) {
  */
 function addDeps(opts) {
     console.log(chalk.blue('Installing dependencies...'));
-    const out = PackageManager.run(opts.workspace_type).addDev('eslint typescript vite jsdoc');
+    let out = PackageManager.run(opts.workspace_type).addDev('eslint vite jsdoc mocha chai');
+    if (opts.typescript || opts.docs) {
+        out += PackageManager.run(opts.workspace_type).addDev('typescript typedoc');
+    }
     console.log(`${chalk.blue(out?.toString().trim())}`);
     console.log(`${chalk.green('✓')} Done!`);
 }
@@ -60,75 +65,4 @@ function addExample(opts) {
     const out = PackageManager.run(opts.workspace_type).init('vite example', '--template vanilla');
     console.log(`${chalk.blue(out.toString().trim())}`);
     console.log(`${chalk.green('✓')} Done!`);
-}
-
-async function createRootFiles(opts) {
-    GetCommands(opts.workspace_type).workspaces.run('test');
-    GetCommands(opts.workspace_type).workspaces.run('build');
-    if (opts.workspace_type === 'yarn') {
-        opts.extra_commands = `"packageManager": "yarn@3.1.1"`
-    }
-
-    await Promise.all([
-        asyncWriteFile(`${OUT_DIR}/package.json`, packageJSON(opts)),
-        asyncWriteFile(`${OUT_DIR}/README.md`, README(opts)),
-        asyncWriteFile(`${OUT_DIR}/LICENSE`, fs.readFileSync(`./licenses/${opts.license}.txt`)),
-    ]);
-    console.log(`${chalk.green('✓')} Generated root files`);
-}
-
-async function createWorkspaceFiles(opts) {
-    const _opts = { ...opts, package_name: 'my_first_package' };
-    if (!fs.existsSync(`${OUT_DIR}/packages/${_opts.package_name}`)) fs.mkdirSync(`${OUT_DIR}/packages/${_opts.package_name}`);
-    await Promise.all([
-        asyncWriteFile(`${OUT_DIR}/packages/${_opts.package_name}/package.json`, packageJSON(_opts, 'default')),
-        asyncWriteFile(`${OUT_DIR}/packages/${_opts.package_name}/README.md`, README(_opts, 'default')),
-        asyncWriteFile(`${OUT_DIR}/packages/${_opts.package_name}/index.js`, indexjs(_opts, 'default')),
-    ]);
-    console.log(`${chalk.green('✓')} Generated first package files`);
-}
-
-/**
- * Render package json template
- * 
- * @private
- * @param {createOpts} opts
- * @returns {object}
- */
-export function packageJSON(opts, type = 'root') {
-    const template = fs.readFileSync(`./templates/${type}/package.json.mustache`, 'utf8');
-    return Mustache.render(template, opts);
-}
-
-/**
- * Render README
- * 
- * @private
- * @param {createOpts} opts
- * @returns {object}
- */
-export function README(opts, type = 'root') {
-    const template = fs.readFileSync(`./templates/${type}/README.md.mustache`, 'utf8');
-    return Mustache.render(template, opts);
-}
-
-/**
- * Render index.js entrypoint
- * 
- * @private
- * @param {createOpts} opts
- * @returns {object}
- */
-export function indexjs(opts, type = 'root') {
-    const template = fs.readFileSync(`./templates/${type}/index.js.mustache`, 'utf8');
-    return Mustache.render(template, opts);
-}
-
-function asyncWriteFile(file, data) {
-    return new Promise((resolve, reject) => {
-        fs.writeFile(file, data, 'utf8', (err) => {
-            if (err) reject(err);
-            else resolve('');
-        });
-    });
 }

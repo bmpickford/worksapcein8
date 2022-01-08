@@ -1,0 +1,40 @@
+{
+    "name": "@workspacein8/workspace",
+    "version": "0.0.1",
+    "description": "Create package",
+    "author": "Benjamin Pickford <b.mpickford@outlook.com> (https://benpickford.me)",
+    "keywords": [],
+    "license": "MIT",
+    "type": "module",
+    "main": "index.js",
+    "module": "index.js",
+    "types": "index.d.ts",
+    "typedocMain": "index.js",
+    "scripts": {
+      "start": "node index.js",
+      "test": "mocha ./**/*.test.js"
+    },
+    "exports": {
+      ".": {
+        "import": "./index.js"
+      }
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/bmpickford/npm-workspaces-example"
+    },
+    "bugs": {
+      "url": "https://github.com/bmpickford/npm-workspaces-example/issues"
+    },
+    "engines": {
+      "node": ">=16",
+      "npm": ">=7"
+    },
+    "dependencies": {
+        "@workspacein8/packagemanager": "*"
+    },
+    "devDependencies": {
+      "mustache": "^4.2.0"
+    }
+  }
+  

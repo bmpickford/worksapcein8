@@ -36,6 +36,7 @@ const selections = [
         choices: [
           { title: 'NPM', value: 'npm' },
           { title: 'Yarn', value: 'yarn' },
+          { title: 'PNPM', value: 'pnpm' },
         ],
     },
     {
