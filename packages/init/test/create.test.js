@@ -10,7 +10,7 @@ const MIN_OPTS = {
   out_dir: '../../out'
 }
 
-describe.only('create:e2e', function () {
+describe.skip('create:e2e', function () {
   this.timeout(30000);
   it.only('npm', async function () {
     await create({ ...MIN_OPTS, workspace_type: 'npm' });

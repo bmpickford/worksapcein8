@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import { FileReadWrite as File } from './filereadwrite.js';
 import { create } from './index.js';
-import { spy, match } from 'sinon';
+import { stub } from 'sinon';
+import { CorePackageGenerator } from '@workspacein8/core';
 
 const DEFAULT_OPTS = {
     out_dir: '.',
@@ -10,15 +10,14 @@ const DEFAULT_OPTS = {
 
 describe('workspace', function () {
   it('generates all files', async function() {
-    const fileWriteSpy = spy();
-    File.write = fileWriteSpy;
+    const generateSpy = stub(CorePackageGenerator.prototype, "generate");
     await create(DEFAULT_OPTS);
 
-    expect(fileWriteSpy.calledWith('./package.json', match.any)).to.be.true;
-    expect(fileWriteSpy.calledWith('./README.md', match.any)).to.be.true;
-    expect(fileWriteSpy.calledWith('./LICENSE', match.any)).to.be.true;
-    expect(fileWriteSpy.calledWith('./.editorconfig', match.any)).to.be.true;
-    expect(fileWriteSpy.calledWith('./.gitignore', match.any)).to.be.true;
-    expect(fileWriteSpy.calledWith('./.eslintrc.js', match.any)).to.be.true;
+    expect(generateSpy.calledWith('package.json')).to.be.true;
+    expect(generateSpy.calledWith('README.md')).to.be.true;
+    expect(generateSpy.calledWith('LICENSE')).to.be.true;
+    expect(generateSpy.calledWith('.editorconfig')).to.be.true;
+    expect(generateSpy.calledWith('.gitignore')).to.be.true;
+    expect(generateSpy.calledWith('.eslintrc.js')).to.be.true;
   });
 });

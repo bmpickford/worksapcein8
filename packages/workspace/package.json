@@ -31,10 +31,8 @@
       "npm": ">=7"
     },
     "dependencies": {
-        "@workspacein8/packagemanager": "*"
-    },
-    "devDependencies": {
-      "mustache": "^4.2.0"
+        "@workspacein8/packagemanager": "*",
+        "@workspacein8/core": "*"
     }
   }
   

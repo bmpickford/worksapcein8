@@ -36,6 +36,7 @@ export default async function create(opts) {
         createPackage({ ...opts, out_dir: `${opts.out_dir}/packages/${opts.package_name}`}),
     ]);
     execSync(`npx npx -p typescript tsc ${opts.out_dir}/packages/${opts.package_name}/index.js --declaration --emitDeclarationOnly --allowJs`);
+
     addDeps(opts);
     addExample(opts);
 }
