@@ -1,6 +1,6 @@
 {
     "name": "@workspacein8/workspace",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Create package",
     "author": "Benjamin Pickford <b.mpickford@outlook.com> (https://benpickford.me)",
     "keywords": [],
@@ -32,6 +32,8 @@
     },
     "dependencies": {
         "@workspacein8/packagemanager": "*",
-        "@workspacein8/core": "*"
+        "@workspacein8/core": "*",
+        "mustache": "^4.2.0",
+        "chalk": "^5.0.0"
     }
 }

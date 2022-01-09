@@ -1,6 +1,6 @@
 {
     "name": "@workspacein8/packagemanager",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Commands for package managers",
     "author": "Benjamin Pickford <b.mpickford@outlook.com> (https://benpickford.me)",
     "keywords": [],
@@ -30,8 +30,11 @@
         "node": ">=16",
         "npm": ">=7"
     },
+    "dependencies": {
+        "chalk": "^5.0.0"
+    },
     "devDependencies": {
-        "mustache": "^4.2.0",
         "sinon": "^12.0.1"
     }
+    
 }

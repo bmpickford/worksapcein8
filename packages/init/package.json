@@ -1,6 +1,6 @@
 {
   "name": "@workspacein8/init",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Create initial repo",
   "author": "Benjamin Pickford <b.mpickford@outlook.com> (https://benpickford.me)",
   "keywords": [],
@@ -37,9 +37,9 @@
   "dependencies": {
     "@workspacein8/package": "*",
     "@workspacein8/packagemanager": "*",
-    "@workspacein8/workspace": "*"
-  },
-  "devDependencies": {
+    "@workspacein8/workspace": "*",
+    "chalk": "^5.0.0",
+    "prompts": "^2.4.2",
     "yargs": "^17.3.1"
   }
 }
