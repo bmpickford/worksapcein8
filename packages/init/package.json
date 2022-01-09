@@ -8,11 +8,14 @@
   "type": "module",
   "main": "index.js",
   "module": "index.js",
-  "types": "index.d.ts",
+  "types": "index.js",
   "typedocMain": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "mocha ./**/*.test.js"
+  },
+  "bin": {
+    "create": "./index.js"
   },
   "exports": {
     ".": {
@@ -21,7 +24,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bmpickford/npm-workspaces-example"
+    "url": "https://github.com/bmpickford/npm-workspaces-example",
+    "directory": "packages/init"
   },
   "bugs": {
     "url": "https://github.com/bmpickford/npm-workspaces-example/issues"
@@ -34,5 +38,8 @@
     "@workspacein8/package": "*",
     "@workspacein8/packagemanager": "*",
     "@workspacein8/workspace": "*"
+  },
+  "devDependencies": {
+    "yargs": "^17.3.1"
   }
 }

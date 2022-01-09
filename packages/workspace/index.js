@@ -44,7 +44,7 @@ export async function create(opts) {
     await Promise.all([
         workspace.generate('package.json'),
         workspace.generate('README.md'),
-        workspace.generate('LICENSE'),
+        workspace.license(),
         workspace.generate('.editorconfig'),
         workspace.generate('.gitignore'),
         workspace.generate('.eslintrc.js'),

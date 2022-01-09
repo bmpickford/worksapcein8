@@ -1,5 +1,10 @@
 import Mustache from 'mustache';
 import { FileReadWrite as File } from './filereadwrite.js';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 
 const LICENSES = {
     'afl-3.0': 'licenses/AFL-3.0.txt',
@@ -91,6 +96,12 @@ class CorePackageGenerator {
     render(file, type = 'default') {
         const template = File.read(`${this.templateDir}/${type}/${file}.mustache`, 'utf8');
         return Mustache.render(template, this.opts);
+    }
+
+    async license() {
+        const licensePath = LICENSES[this.opts.license?.toLowerCase()];
+        const licenceTemplate = File.read(`${__dirname}/${licensePath}`, 'utf8');
+        return File.write(`${this.opts.out_dir}/LICENSE`, licenceTemplate);
     }
 
     /**
