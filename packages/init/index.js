@@ -1,4 +1,5 @@
-#!/usr/bin/env node
+#!/usr/bin/env bash
+":" //# comment; exec /usr/bin/env node --input-type=module - "$@" < "$0"
 import prompts from 'prompts';
 import create from './create.js';
 import { validatePackageName, validateScope } from './validators/index.js';
@@ -25,6 +26,7 @@ const argv = yargs(process.argv.slice(2))
     .example('$0 create -o ./my_other_folder', 'Create at a different output location')
     .example('$0 create -p my_package', 'Create single package called my_package instead of whole workspace')
     .help('help')
+    .alias('h', 'help')
     .argv;
 
 prompts.override(argv);
