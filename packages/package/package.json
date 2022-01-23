@@ -1,38 +1,38 @@
 {
-    "name": "@workspacein8/package",
-    "version": "0.0.11",
-    "description": "Create package",
-    "author": "Benjamin Pickford <b.mpickford@outlook.com> (https://benpickford.me)",
-    "keywords": [],
-    "license": "MIT",
-    "type": "module",
-    "main": "index.js",
-    "module": "index.js",
-    "types": "index.d.ts",
-    "typedocMain": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "test": "mocha ./**/*.test.js"
-    },
-    "exports": {
-        ".": {
-            "import": "./index.js"
-        }
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/bmpickford/workspacein8"
-    },
-    "bugs": {
-        "url": "https://github.com/bmpickford/workspacein8/issues"
-    },
-    "engines": {
-        "node": ">=16",
-        "npm": ">=7"
-    },
-    "dependencies": {
-        "@workspacein8/packagemanager": "*",
-        "@workspacein8/core": "*",
-        "mustache": "^4.2.0"
+  "name": "@workspacein8/package",
+  "version": "0.0.11",
+  "description": "Create package",
+  "author": "Benjamin Pickford <b.mpickford@outlook.com> (https://benpickford.me)",
+  "keywords": [],
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "typedocMain": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha ./**/*.test.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.js"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bmpickford/workspacein8"
+  },
+  "bugs": {
+    "url": "https://github.com/bmpickford/workspacein8/issues"
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=7"
+  },
+  "dependencies": {
+    "@workspacein8/packagemanager": "*",
+    "@workspacein8/core": "*",
+    "mustache": "^4.2.0"
+  }
 }

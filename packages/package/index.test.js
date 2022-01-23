@@ -4,15 +4,15 @@ import { stub } from 'sinon';
 import { CorePackageGenerator } from '@workspacein8/core';
 
 const DEFAULT_OPTS = {
-    out_dir: '.',
-    workspace_type: 'npm',
-    license: 'MIT',
-    package_name: 'test'
-}
+  out_dir: '.',
+  workspace_type: 'npm',
+  license: 'MIT',
+  package_name: 'test',
+};
 
 describe('workspace', function () {
-  it('generates all files', async function() {
-    const generateSpy = stub(CorePackageGenerator.prototype, "generate");
+  it('generates all files', async function () {
+    const generateSpy = stub(CorePackageGenerator.prototype, 'generate');
     await create(DEFAULT_OPTS);
 
     expect(generateSpy.calledWith('package.json')).to.be.true;

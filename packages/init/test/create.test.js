@@ -7,24 +7,24 @@ const MIN_OPTS = {
   workspace_type: 'npm',
   typescript: false,
   docs: false,
-  out_dir: '../../out'
-}
+  out_dir: '../../out',
+};
 
 describe.skip('create:e2e', function () {
   this.timeout(30000);
   it('npm', async function () {
     await create({ ...MIN_OPTS, workspace_type: 'npm' });
-  })
+  });
 
   it('yarn1', async function () {
     await create({ ...MIN_OPTS, workspace_type: 'yarn' });
-  })
+  });
 
   it('yarn2', async function () {
     await create({ ...MIN_OPTS, workspace_type: 'yarn2' });
-  })
+  });
 
   it('pnpm', async function () {
     await create({ ...MIN_OPTS, workspace_type: 'pnpm' });
-  })
+  });
 });

@@ -4,14 +4,14 @@ import { stub } from 'sinon';
 import { CorePackageGenerator } from '@workspacein8/core';
 
 const DEFAULT_OPTS = {
-    out_dir: '.',
-    workspace_name: 'test'
-}
+  out_dir: '.',
+  workspace_name: 'test',
+};
 
 describe('workspace', function () {
-  it('generates all files', async function() {
-    const generateSpy = stub(CorePackageGenerator.prototype, "generate");
-    const licenseSpy = stub(CorePackageGenerator.prototype, "license");
+  it('generates all files', async function () {
+    const generateSpy = stub(CorePackageGenerator.prototype, 'generate');
+    const licenseSpy = stub(CorePackageGenerator.prototype, 'license');
     await create(DEFAULT_OPTS);
 
     expect(generateSpy.calledWith('package.json')).to.be.true;
