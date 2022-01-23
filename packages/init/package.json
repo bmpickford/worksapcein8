@@ -15,7 +15,8 @@
     "test": "mocha ./**/*.test.js"
   },
   "bin": {
-    "@workspacein8/init": "./index.js"
+    "@workspacein8/init": "./index.js",
+    "workspacein8": "./index.js"
   },
   "exports": {
     ".": {
