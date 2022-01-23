@@ -31,7 +31,7 @@ npx @workspacein8/init
 ```bash
       --version         Show version number                        [boolean]
       --debug           Add debugging statements                   [boolean]
-      --defaults        Select defaults                            [boolean]
+      --defaults        Preselct all defaults                      [boolean]
   -w, --workspace_name  Name of workspace
   -o, --out             Output dir
   -p, --package         Only create a single package instead of a workspace
