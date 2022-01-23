@@ -1,6 +1,6 @@
 {
   "name": "@workspacein8/init",
-  "version": "0.0.6",
+  "version": "0.0.10",
   "description": "Create initial repo",
   "author": "Benjamin Pickford <b.mpickford@outlook.com> (https://benpickford.me)",
   "keywords": [],
@@ -15,7 +15,7 @@
     "test": "mocha ./**/*.test.js"
   },
   "bin": {
-    "create": "./index.js"
+    "@workspacein8/init": "./index.js"
   },
   "exports": {
     ".": {
@@ -24,11 +24,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bmpickford/npm-workspaces-example",
+    "url": "https://github.com/bmpickford/workspacein8",
     "directory": "packages/init"
   },
   "bugs": {
-    "url": "https://github.com/bmpickford/npm-workspaces-example/issues"
+    "url": "https://github.com/bmpickford/workspacein8/issues"
   },
   "engines": {
     "node": ">=16",
