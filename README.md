@@ -1,10 +1,11 @@
 # @workspacein8
 
-Workspace generator.
+> Configurable workspace generator with premade templates for node and UI component libraries
 
  * Supports npm, yarn and pnpm
- * Can create node or UI libraries based on templates
- * Can generate typescript and typedoc
+ * Node or UI libraries based on templates
+ * Supprts HTML, React and Lit
+ * Typescript and Typedoc as optional includes
 
 ## Usage
 ```bash
@@ -19,7 +20,7 @@ npx @workspacein8/init my_new_workspace --template components --framework react
 ```
 
 ## Example Outputs
-[Examples](https://github.com/bmpickford/worksapcein8/examples)
+[Examples](https://github.com/bmpickford/workspacein8/examples)
 
 ## CLI Options
 ```bash
