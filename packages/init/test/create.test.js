@@ -12,7 +12,7 @@ const MIN_OPTS = {
 
 describe.skip('create:e2e', function () {
   this.timeout(30000);
-  it.only('npm', async function () {
+  it('npm', async function () {
     await create({ ...MIN_OPTS, workspace_type: 'npm' });
   })
 

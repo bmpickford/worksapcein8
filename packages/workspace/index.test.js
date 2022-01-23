@@ -11,11 +11,12 @@ const DEFAULT_OPTS = {
 describe('workspace', function () {
   it('generates all files', async function() {
     const generateSpy = stub(CorePackageGenerator.prototype, "generate");
+    const licenseSpy = stub(CorePackageGenerator.prototype, "license");
     await create(DEFAULT_OPTS);
 
     expect(generateSpy.calledWith('package.json')).to.be.true;
     expect(generateSpy.calledWith('README.md')).to.be.true;
-    expect(generateSpy.calledWith('LICENSE')).to.be.true;
+    expect(licenseSpy.called).to.be.true;
     expect(generateSpy.calledWith('.editorconfig')).to.be.true;
     expect(generateSpy.calledWith('.gitignore')).to.be.true;
     expect(generateSpy.calledWith('.eslintrc.js')).to.be.true;
