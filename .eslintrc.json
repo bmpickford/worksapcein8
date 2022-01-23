@@ -15,5 +15,5 @@
     "plugins": [
         "mocha"
     ],
-    "ignorePatterns": ["node_modules", "docs", "dist"]
+    "ignorePatterns": ["node_modules", "docs", "dist", "examples"]
 }

@@ -1,39 +1,33 @@
 # @workspacein8
 
-Initialise your monorepo with ease
+Workspace generator.
+
+ * Supports npm, yarn and pnpm
+ * Can create node or UI libraries based on templates
+ * Can generate typescript and typedoc
 
 ## Usage
 ```bash
-npx @workspacein8/init
+# Interactive prompts for creating your workspace
+npx @workspacein8/init my_new_workspace
+
+# Generate a component library
+npx @workspacein8/init my_new_workspace --template components
+
+# Generate a component library with a specific framework
+npx @workspacein8/init my_new_workspace --template components --framework react
 ```
 
-## Key Features
- * Use your favourite package manager
- * Generate premade workspaces with templates
- * Support for typedoc and typescript
- * Generates with testing setup
- * Storybook - TODO
-
-## Templates
- * React component library - TODO
- * Lit component library - TODO
- * React App - TODO
- * Vue App - TODO
- * Svelte App - TODO
-
-## Package Managers
- * npm
- * yarn v1
- * yarn v2 - TODO
- * pnpm
+## Example Outputs
+[Examples](https://github.com/bmpickford/worksapcein8/examples)
 
 ## CLI Options
 ```bash
-      --version         Show version number                        [boolean]
-      --debug           Add debugging statements                   [boolean]
-      --defaults        Preselct all defaults                      [boolean]
-  -w, --workspace_name  Name of workspace
-  -o, --out             Output dir
-  -p, --package         Only create a single package instead of a workspace
-  -h, --help            Show help
+Options:
+      --version    Show version number            [boolean]
+      --debug      Add debugging statements       [boolean]
+  -y               Preselect all defaults         [boolean]
+  -t, --template   Use premade template           [choices: "node", "components"] [default: "node"]
+  -f, --framework  Use specific framework         [choices: "none", "react"] [default: "none"]
+  -h, --help       Show help                      [boolean]
 ```

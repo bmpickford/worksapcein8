@@ -18,16 +18,14 @@
       ".": {
         "import": "./index.js"
       }
-    },
-    {{#repository_url}}
+    },{{#repository_url}}
     "repository": {
       "type": "git",
       "url": "{{repository_url}}"
     },
     "bugs": {
       "url": "{{repository_url}}/issues"
-    },
-    {{/repository_url}}
+    },{{/repository_url}}
     "engines": {
       "node": ">=16.10",
       "npm": ">=7"

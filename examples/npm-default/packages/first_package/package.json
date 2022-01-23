@@ -1,0 +1,27 @@
+{
+    "name": "@myorg/first_package",
+    "version": "0.0.0",
+    "description": "first_package",
+    "author": "@myorg",
+    "keywords": [],
+    "license": "mit",
+    "type": "module",
+    "main": "index.js",
+    "module": "index.js",
+    "types": "index.d.ts",
+    "typedocMain": "index.js",
+    "scripts": {
+      "start": "node index.js",
+      "test": "mocha ./**/*.test.js"
+    },
+    "exports": {
+      ".": {
+        "import": "./index.js"
+      }
+    },
+    "engines": {
+      "node": ">=16.10",
+      "npm": ">=7"
+    }
+  }
+  

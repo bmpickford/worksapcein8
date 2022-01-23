@@ -1,45 +1,58 @@
 #!/usr/bin/env node
 import prompts from 'prompts';
 import create from './create.js';
-import { validatePackageName, validateScope } from './validators/index.js';
+import { validateScope } from './validators/index.js';
 import yargs from 'yargs';
 
 const argv = yargs(process.argv.slice(2))
-  .usage('Usage: $0 <command> [options]')
-  .command('@workspacein8/init', 'create a new workspace')
-  .boolean(['debug', 'defaults'])
+  .usage('Usage: <command> [options]')
+  .scriptName('@workspacein8/init')
+  .command('<workspace_name>', 'Generate a workspace')
+  .demandCommand(1, 'You need to specify a name for the workspace')
+  .boolean(['debug', 'y'])
   .describe('debug', 'Add debugging statements')
-  .describe('defaults', 'Preselect all defaults')
-  .describe('workspace_name', 'Name of workspace')
-  .alias('w', 'workspace_name')
-  .nargs('w', 1)
-  .describe('out', 'Output dir')
-  .alias('o', 'out')
-  .nargs('o', 1)
-  .describe('package', 'Only create a single package instead of a workspace')
-  .alias('p', 'package')
-  .nargs('p', 1)
-  .example('$0 @workspacein8/init', 'Start interactive creation')
+  .describe('y', 'Preselect all defaults')
+  .option('out', {
+    describe: 'Out directory',
+    alias: 'o',
+    nargs: 1,
+    default: '.',
+  })
+  .option('template', {
+    describe: 'Use premade template',
+    choices: ['node', 'components'],
+    alias: 't',
+    default: 'node',
+    nargs: 1,
+  })
+  .option('framework', {
+    describe: 'Use specific framework. "none" will use plain HTML',
+    choices: ['none', 'react', 'lit'],
+    alias: 'f',
+    default: 'none',
+    nargs: 1,
+  })
+  .example('$0 <workspace_name>', 'Start interactive creation')
+  .example('$0 <workspace_name> -y', 'Accept all defaults')
   .example(
-    '$0 @workspacein8/init -w my_workspace',
-    'Start creation with workspace name already set'
+    '$0 <workspace_name> --template components',
+    'Create component library'
   )
-  .example('$0 @workspacein8/init --defaults', 'Create with all default values')
   .example(
-    '$0 @workspacein8/init -o ./my_other_folder',
-    'Create at a different output location'
+    '$0 <workspace_name> --template components --framework react',
+    'Create a React component library'
   )
   .example(
-    '$0 @workspacein8/init -p my_package',
-    'Create single package called my_package instead of whole workspace'
+    '$0 <workspace_name> -o ./my_sub_directory',
+    'Create at  different directory'
   )
   .help('help')
-  .alias('h', 'help').argv;
+  .alias('h', 'help')
+  .wrap(Math.min(120, yargs.windowWidth)).argv;
 
 prompts.override(argv);
 
 const DEFAULTS = {
-  workspace_name: 'my_workspace',
   package_name: 'first_package',
   scope: '@myorg',
   license: 'mit',
@@ -47,12 +60,6 @@ const DEFAULTS = {
 };
 
 const questions = [
-  {
-    type: 'text',
-    name: 'workspace_name',
-    message: 'Workspace name?',
-    validate: validatePackageName,
-  },
   {
     type: 'text',
     name: 'scope',
@@ -111,14 +118,19 @@ const selections = [
     return;
   }
 
-  const promptResponses = argv.defaults
+  const workspace_name = argv._[0];
+
+  const promptResponses = argv.y
     ? DEFAULTS
     : await prompts([...questions, ...selections], { onCancel });
   const responses = {
     ...promptResponses,
+    workspace_name,
     package_name: promptResponses.package_name || 'first_package',
     debug: argv.debug,
     out_dir: argv.out || '.',
+    template_type: argv.template,
+    framework: argv.framework,
   };
 
   create(responses);

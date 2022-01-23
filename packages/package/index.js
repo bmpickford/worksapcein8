@@ -40,3 +40,33 @@ export async function create(opts) {
   ]);
   console.log(`${chalk.green('✓')} Generated first package files`);
 }
+
+/**
+ *
+ * @param {PackageOpts} opts
+ * @param {string} [type="button"]
+ */
+export async function createComponent(
+  opts,
+  framework = 'react',
+  type = 'button'
+) {
+  const pkg = new PackageGenerator(opts);
+
+  const filetype = opts.typescript ? 'ts' : 'js';
+  await Promise.all([
+    pkg.generate('package.json'),
+    pkg.generate('README.md'),
+    pkg.generate(
+      'index.js',
+      `index.${filetype}`,
+      `${framework}/components/${type}`
+    ),
+    pkg.generate(
+      'index.story.js',
+      `index.story.${filetype}`,
+      `${framework}/components/${type}`
+    ),
+  ]);
+  console.log(`${chalk.green('✓')} Generated ${type} files`);
+}

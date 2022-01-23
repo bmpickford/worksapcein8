@@ -115,11 +115,12 @@ class CorePackageGenerator {
    *
    * @param {string} infile - Input file from template
    * @param {string} [outfile] - File to output to. Will default to infile
+   * @param {string} [templateDir="default"] - Template directory
    */
-  async generate(infile, outfile) {
+  async generate(infile, outfile, templateDir = 'default') {
     return File.write(
       `${this.opts.out_dir}/${outfile || infile}`,
-      this.render(infile)
+      this.render(infile, templateDir)
     );
   }
 }
