@@ -29,6 +29,10 @@ export default async function create(opts) {
   if (!opts.out_dir) throw new Error('Out directory not defined');
   if (!opts.workspace_name) throw new Error('Workspace name not defined');
 
+  if (opts.template_type === 'components') {
+    opts.package_name = 'button';
+  }
+
   opts.out_dir = `${opts.out_dir}/${opts.workspace_name}`;
   if (fs.existsSync(opts.out_dir)) {
     console.error(
@@ -113,10 +117,6 @@ function addDeps(opts) {
   if (opts.typescript || opts.docs) {
     out += PackageManager.run(opts.workspace_type).addDev('typescript typedoc');
     addTypeDecleration(opts);
-  }
-
-  if (opts.template_type === 'components') {
-    // out += PackageManager.run(opts.workspace_type).addDev('typescript typedoc');
   }
 
   if (opts.debug) {
