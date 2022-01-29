@@ -1,0 +1,38 @@
+{
+    "name": "{{#scope}}{{scope}}/{{/scope}}{{package_name}}",
+    "version": "0.0.0",
+    "description": "{{package_name}}",
+    "author": "{{scope}}",
+    "keywords": [],
+    "license": "{{license}}",
+    "type": "module",
+    "main": "index.js",
+    "module": "index.js",
+    "types": "index.d.ts",
+    "typedocMain": "index.js",{{extra_commands}}
+    "scripts": {
+      "start": "node index.js",
+      "test": "mocha ./**/*.test.js"
+    },
+    "exports": {
+      ".": {
+        "import": "./index.js"
+      }
+    },{{#repository_url}}
+    "repository": {
+      "type": "git",
+      "url": "{{repository_url}}"
+    },
+    "bugs": {
+      "url": "{{repository_url}}/issues"
+    },{{/repository_url}}
+    "engines": {
+      "node": ">=16.10",
+      "npm": ">=7"
+    },
+    "peerDependencies": {
+        "react": "^17",
+        "react-dom": "^17"
+    }
+  }
+  
