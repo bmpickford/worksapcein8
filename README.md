@@ -1,6 +1,8 @@
 # @workspacein8
 
-> Configurable workspace generator with premade templates for node and UI component libraries
+> Configurable workspace generator for monorepos with premade templates for node and UI component libraries
+
+## Key Features
 
  * Supports npm, yarn and pnpm
  * Node or UI libraries based on templates
@@ -20,7 +22,7 @@ npx @workspacein8/init my_new_workspace --template components --framework react
 ```
 
 ## Example Outputs
-[Examples](https://github.com/bmpickford/workspacein8/examples)
+[Examples](https://github.com/bmpickford/worksapcein8/tree/main/examples)
 
 ## CLI Options
 ```bash
